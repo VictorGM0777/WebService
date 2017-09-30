@@ -1,5 +1,7 @@
 package br.com.fiap.bo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -26,6 +28,16 @@ public class ProdutoBO {
 		} finally {
 			em.close();
 		}
+		
+	}
+	
+	public List<Produto> listar() {
+		
+		EntityManager em = fabrica.createEntityManager();
+		ProdutoDAO dao = new ProdutoDAOImpl(em);
+		List<Produto> lista = dao.listar();
+		em.close();
+		return lista;
 		
 	}
 

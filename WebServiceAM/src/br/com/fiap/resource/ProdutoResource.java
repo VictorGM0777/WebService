@@ -1,8 +1,12 @@
 package br.com.fiap.resource;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -26,6 +30,14 @@ public class ProdutoResource {
 		url.path(String.valueOf(produto.getCodigo()));
 		return Response.created(url.build()).build();
 
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Produto> listar() {
+	
+		return bo.listar();
+		
 	}
 	
 }
